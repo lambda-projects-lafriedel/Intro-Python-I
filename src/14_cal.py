@@ -24,25 +24,29 @@ import calendar
 from datetime import datetime
 
 # Get user input of month/month and year
-l = len(sys.argv)
-d = sys.argv
-print(d)
+date = sys.argv
 
-c = calendar.TextCalendar()
-current = datetime.now()
+cal = calendar.TextCalendar()
+
+month = datetime.today().month
+year = datetime.today().year
 
 # If no input, print cal of current month
-if l <= 1:
-    current_cal = c.formatmonth(current.year, current.month)
-    print(current_cal)
+if len(date) == 1:
+    pass
 
 # If only month, render that month's calendar
-if l == 2:
-    month = d.pop(1)
-    print(list(calendar.month_abbr))
-    #month_cal = c.formatmonth(current.year, month)
-    #print(month_cal)
+elif len(date) == 2:
+    month = int(date[1])
 
 # If month and year, render the calendar for that month in that year
+elif len(date) == 3:
+    month = int(date[1])
+    year = int(date[2])
 
 # Else, print directions for giving proper input
+else:
+    print("Please enter [month] [year] as numerical values.")
+    exit()
+
+cal.prmonth(year, month)
