@@ -22,3 +22,31 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+# Get user input of month/month and year
+date = sys.argv
+
+cal = calendar.TextCalendar()
+
+month = datetime.today().month
+year = datetime.today().year
+
+# If no input, print cal of current month
+if len(date) == 1:
+    pass
+
+# If only month, render that month's calendar
+elif len(date) == 2:
+    month = int(date[1])
+
+# If month and year, render the calendar for that month in that year
+elif len(date) == 3:
+    month = int(date[1])
+    year = int(date[2])
+
+# Else, print directions for giving proper input
+else:
+    print("Please enter [month] [year] as numerical values.")
+    exit()
+
+cal.prmonth(year, month)
